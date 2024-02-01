@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>IDSkyNetwork - Login</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<link rel="shortcut icon" href="img/corner.png" type="image/x-icon">
+		<link rel="icon" href="img/corner.png" type="image/x-icon">
+		<link rel="stylesheet" href="css/custom.bootstrap.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+		  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create two equal columns that floats next to each other */
+			.column {
+
+				float: left;
+				width: 40%;
+				/* padding: 10px; */
+				height: 100%; /* Should be removed. Only for demonstration */
+				/* margin-top: 5%; */
+				/* margin-bottom: 5%; */
+
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+				/* margin-top: -5%; */
+			}
+			
+			/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+			@media screen and (max-width: 992px) {
+				.column {
+					width: 80%;
+					/* margin-top: 5%; */
+				/* margin-bottom: 5%; */
+				
+				}
+			}
+		
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+</style>
+	</head>
+	<body class="bg-img">
+		<!-- $(if chap-id)
+		<form name="sendin" action="$(link-login-only)" method="post">
+			<input type="hidden" name="username" />
+			<input type="hidden" name="password" />
+			<input type="hidden" name="dst" value="$(link-orig)" />
+			<input type="hidden" name="popup" value="true" />
+		</form>
+		<script type="text/javascript" src="js/md5.js"></script>
+		<script type="text/javascript">
+		function doLogin() {
+			document.sendin.username.value = document.login.username.value;
+			document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+			document.sendin.submit();
+			return false;
+		}
+		</script>
+		$(endif) -->
+
+
+		<div class="row" style="margin-left: 15%;  margin-bottom: 20% ;" >
+			<div class="column " style="background-color:#ffff; margin-top: 10%; border-radius: 20px; height: 650px;">
+				<div class="jumbroton">
+					<div class=" text-center">
+						<img class="logo" src="img/corner.png">
+						<br>
+							<br>
+								<p style="font-size: xx-large;">UHB Internet Hotspot</p>
+							<br>
+				
+						<div id="error" class='error'>
+							<script type="text/javascript">
+							var error="$(error)";
+							if(error=="credit limit reached"){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Batas kredit user <b>$(username)</b> sudah habis</div>');
+								}
+							else if(error=="uptime limit reached"){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Masa aktif user <b>$(username)</b> sudah habis</div>');
+								}
+							else if(error=="download limit reached"){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Kuota user <b>$(username)</b> telah habis</div>');
+								}
+							else if(error=="no valid profile found"){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Masa aktif user <b>$(username)</b> telah habis</div>');
+								}
+							else if(error=="invalid password"){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>username / password tidak valid!</div>');
+								}
+							else if(error=="simultaneous session limit reached") {
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>User <b>$(username)</b> sudah login di device lain</div>');
+								}
+							else if(error){
+								document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>$(error)</div>');
+							}
+							</script>
+						</div>
+						<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+							<input type="hidden" name="dst" value="$(link-orig)" />
+							<input type="hidden" name="popup" value="true" />
+							<div class="form-group">
+								<input type="text" class="form-control text-center input-login" name="username"  placeholder="username" value="$(username)" required="required" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control text-center input-login" name="password"  placeholder="password" required="required" autocomplete="off">
+							</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-success">LOGIN</button>
+							</div>
+							<div class="form-group text-center">
+								<p class="p">Belum punya akun? klik <a href="paket.html">DISINI</a></p>
+								<button type="submit" class="btn btn-success"><a href="paket.html">BUAT AKUN</a></button>
+							</div>
+						</form>
+					</div>
+
+					<div id="modal-notice" class="modal fade" role="dialog" data-backdrop="static">
+						<div class="modal-dialog modal-sm">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="text-warning modal-header">
+									<h4 class="modal-title text-center icon-attention-circled">Oops..</h4>
+								</div>
+								<div class="modal-body">
+									<h4>Hello.. $(username)</h4>
+									<p>Mohon maaf, masa aktif Anda telah habis, silahkan melakukan pembayaran jika Anda ingin memperpanjang masa aktif.</p>
+									<p>Atau</p>
+									<p>Klik <a href="paket.html">DISINI</a> untuk melihat daftar paket terbaru.</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default btn-sm center-block" data-dismiss="modal">OK</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column" style="background-color:#2c395b;  margin-top: 10%; padding-bottom: 200px; border-radius: 20px;padding-top: 100px; height: 650px;">
+				<h2 style="color: #ffff; text-align: center; font-weight:bold;">Informasi</h2>
+				<p>Some text..</p>
+				<!-- <img src="img/bg.png" height="100%" width="100%">
+				 -->
+				 <div class="slideshow-container">
+
+					<div class="mySlides fade">
+						<div class="numbertext">1 / 3</div>
+						<img src="img/1.jpg" style="width:100%">
+						<div class="text">Caption Text</div>
+					</div>
+					
+					<div class="mySlides fade">
+						<div class="numbertext">2 / 3</div>
+						<img src="img/2.jpg" style="width:100%">
+						<div class="text">Caption Two</div>
+					</div>
+					
+					<div class="mySlides fade">
+						<div class="numbertext">3 / 3</div>
+						<img src="img/3.jpg" style="width:100%">
+						<div class="text">Caption Three</div>
+					</div>
+					
+					</div>
+			</div>
+			
+		</div>
+		
+
+		<div class="row">
+ 
+				<div class="col-sm" style="background-color:#ffff; margin-top: 10%; border-radius: 20px; height: 650px;">
+					<div class="jumbroton">
+						<div class=" text-center">
+							<img class="logo" src="img/corner.png">
+							<br>
+								<br>
+									<p style="font-size: xx-large;">UHB Internet Hotspot</p>
+								<br>
+					
+							<div id="error" class='error'>
+								<script type="text/javascript">
+								var error="$(error)";
+								if(error=="credit limit reached"){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Batas kredit user <b>$(username)</b> sudah habis</div>');
+									}
+								else if(error=="uptime limit reached"){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Masa aktif user <b>$(username)</b> sudah habis</div>');
+									}
+								else if(error=="download limit reached"){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Kuota user <b>$(username)</b> telah habis</div>');
+									}
+								else if(error=="no valid profile found"){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>Masa aktif user <b>$(username)</b> telah habis</div>');
+									}
+								else if(error=="invalid password"){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>username / password tidak valid!</div>');
+									}
+								else if(error=="simultaneous session limit reached") {
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>User <b>$(username)</b> sudah login di device lain</div>');
+									}
+								else if(error){
+									document.write('<div class="alert alert-danger"><i class="icon-attention-circled"></i>$(error)</div>');
+								}
+								</script>
+							</div>
+							<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+								<input type="hidden" name="dst" value="$(link-orig)" />
+								<input type="hidden" name="popup" value="true" />
+								<div class="form-group">
+									<input type="text" class="form-control text-center input-login" name="username"  placeholder="username" value="$(username)" required="required" autocomplete="off">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control text-center input-login" name="password"  placeholder="password" required="required" autocomplete="off">
+								</div>
+								<div class="form-group text-center">
+									<button type="submit" class="btn btn-success">LOGIN</button>
+								</div>
+								<div class="form-group text-center">
+									<p class="p">Belum punya akun? klik <a href="paket.html">DISINI</a></p>
+									<button type="submit" class="btn btn-success"><a href="paket.html">BUAT AKUN</a></button>
+								</div>
+							</form>
+						</div>
+	
+						<div id="modal-notice" class="modal fade" role="dialog" data-backdrop="static">
+							<div class="modal-dialog modal-sm">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="text-warning modal-header">
+										<h4 class="modal-title text-center icon-attention-circled">Oops..</h4>
+									</div>
+									<div class="modal-body">
+										<h4>Hello.. $(username)</h4>
+										<p>Mohon maaf, masa aktif Anda telah habis, silahkan melakukan pembayaran jika Anda ingin memperpanjang masa aktif.</p>
+										<p>Atau</p>
+										<p>Klik <a href="paket.html">DISINI</a> untuk melihat daftar paket terbaru.</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default btn-sm center-block" data-dismiss="modal">OK</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+     
+  
+				<div class="col-sm" style="background-color:#2c395b;  margin-top: 10%; padding-bottom: 200px; border-radius: 20px;padding-top: 100px; height: 650px;">
+					<h2 style="color: #ffff; text-align: center; font-weight:bold;">Informasi</h2>
+					<p>Some text..</p>
+					<!-- <img src="img/bg.png" height="100%" width="100%">
+					 -->
+					 <div class="slideshow-container">
+	
+						<div class="mySlides fade">
+							<div class="numbertext">1 / 3</div>
+							<img src="img/1.jpg" style="width:100%">
+							<div class="text">Caption Text</div>
+						</div>
+						
+						<div class="mySlides fade">
+							<div class="numbertext">2 / 3</div>
+							<img src="img/2.jpg" style="width:100%">
+							<div class="text">Caption Two</div>
+						</div>
+						
+						<div class="mySlides fade">
+							<div class="numbertext">3 / 3</div>
+							<img src="img/3.jpg" style="width:100%">
+							<div class="text">Caption Three</div>
+						</div>
+						
+						
+				</div>
+      </div>
+
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script language="JavaScript">
+		if(error=="no valid profile found"){
+		$("#modal-notice").modal('show');
+	    }
+		var margin=10;
+		var speed=20;
+		var times=4;
+		for(var i=0;i<times;i++){
+		$("#error").animate({'margin-left':"+="+(margin=-margin)+'px'},speed);
+		$("#error").animate({'margin-right':"+="+(margin=-margin)+'px'},speed);
+		$("#error").animate({'margin-right':"+="+(margin=-margin)+'px'},speed);
+		$("#error").animate({'margin-left':"+="+(margin=-margin)+'px'},speed);
+		}
+		</script>
+		
+	</body>
+</html>
